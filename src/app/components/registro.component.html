@@ -1,0 +1,59 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+    <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-2xl">
+      <h2 class="text-center text-3xl font-extrabold text-gray-900">
+        Crear Cuenta
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+          Únete para empezar a gestionar tus procesos.
+      </p>
+  
+      <!-- Formulario de Registro -->
+      <form (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+        <!-- Mensaje de Éxito o Error -->
+        <div *ngIf="errorMensaje" class="p-3 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+          {{ errorMensaje }}
+        </div>
+        <div *ngIf="exitoRegistro" class="p-3 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
+            ¡Registro exitoso! Redirigiendo a Iniciar Sesión...
+        </div>
+  
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <label for="nombre" class="sr-only">Nombre Completo</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required
+                   [(ngModel)]="datosRegistro.nombre"
+                   class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                   placeholder="Nombre Completo">
+          </div>
+          <div>
+            <label for="email-registro" class="sr-only">Correo Electrónico</label>
+            <input id="email-registro" name="email" type="email" autocomplete="email" required
+                   [(ngModel)]="datosRegistro.email"
+                   class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                   placeholder="Correo Electrónico">
+          </div>
+          <div>
+            <label for="password-registro" class="sr-only">Contraseña</label>
+            <input id="password-registro" name="password" type="password" autocomplete="new-password" required
+                   [(ngModel)]="datosRegistro.password"
+                   class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                   placeholder="Contraseña">
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit"
+                  class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150">
+            Registrarse
+          </button>
+        </div>
+      </form>
+  
+      <!-- Enlace a Login -->
+      <div class="text-sm text-center">
+        <a [routerLink]="['/login']" class="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
+          ¿Ya tienes una cuenta? Inicia Sesión.
+        </a>
+      </div>
+    </div>
+  </div>

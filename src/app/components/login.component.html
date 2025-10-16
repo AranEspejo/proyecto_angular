@@ -1,0 +1,49 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-50">
+  <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-2xl">
+    <h2 class="text-center text-3xl font-extrabold text-gray-900">
+      Iniciar Sesión
+    </h2>
+    <p class="mt-2 text-center text-sm text-gray-600">
+        Bienvenido de nuevo.
+    </p>
+
+    <!-- Formulario de Login -->
+    <form (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+      <!-- Mensaje de Error -->
+      <div *ngIf="errorMensaje" class="p-3 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+        {{ errorMensaje }}
+      </div>
+
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="email-address" class="sr-only">Correo Electrónico</label>
+          <input id="email-address" name="email" type="email" autocomplete="email" required
+                 [(ngModel)]="credenciales.email"
+                 class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                 placeholder="Correo Electrónico">
+        </div>
+        <div>
+          <label for="password" class="sr-only">Contraseña</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+                 [(ngModel)]="credenciales.password"
+                 class="appearance-none rounded-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                 placeholder="Contraseña">
+        </div>
+      </div>
+
+      <div>
+        <button type="submit"
+                class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150">
+          Iniciar Sesión
+        </button>
+      </div>
+    </form>
+
+    <!-- Enlace a Registro -->
+    <div class="text-sm text-center">
+      <a [routerLink]="['/registro']" class="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
+        ¿No tienes una cuenta? Regístrate aquí.
+      </a>
+    </div>
+  </div>
+</div>
