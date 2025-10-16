@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  //styleUrls: ['./login.component.css'] // Si quieres añadir estilos CSS
+  //styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   // Modelo para enlazar los inputs del formulario
@@ -32,7 +32,7 @@ export class LoginComponent {
       return;
     }
     
-    // --- LÓGICA DE AUTENTICACIÓN FUTURA AQUÍ (ej. llamando a un AuthService) ---
+    // --- usar Authservice ---
     console.log('Intentando iniciar sesión con:', this.credenciales.email);
 
     // SIMULACIÓN: Si las credenciales son "user@test.com" y "password", redirigir.
@@ -40,7 +40,7 @@ export class LoginComponent {
         console.log('Inicio de sesión exitoso simulado. Redirigiendo a /procesos');
         this.router.navigate(['/procesos']);
     } else {
-        this.errorMensaje = 'Credenciales incorrectas. (Solo user@test.com / password es válido en esta demo).';
+        this.errorMensaje = 'Credenciales incorrectas. ( usuario = user@test.com / contrasena = password).';
     }
   }
 

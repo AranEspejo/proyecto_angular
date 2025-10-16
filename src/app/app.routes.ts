@@ -11,6 +11,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   // Redirigir la ruta principal (/) al listado
-  { path: '', redirectTo: '/procesos', pathMatch: 'full' }, 
-  { path: '**', redirectTo: '/procesos'}
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
+  { path: '**', redirectTo: '/login'}
 ];
