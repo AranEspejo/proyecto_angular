@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Gestión de Procesos</h1>
+
+  <div class="header-listado">
+    <h2>Listado de Procesos</h2>
+    <button class="btn-primary" (click)="crearNuevoProceso()">
+      CREAR Nuevo Proceso
+    </button>
+  </div>
+
+  <div class="filtros-container">
+    
+    <input 
+      type="text" 
+      [(ngModel)]="filtroTexto" 
+      (ngModelChange)="aplicarFiltros()"
+      placeholder="Buscar por nombre o descripción..."
+    />
+
+    <select [(ngModel)]="filtroEstado" (ngModelChange)="aplicarFiltros()">
+      <option value="todos">Filtrar por Estado</option>
+      <option value="publicado">Publicado</option>
+      <option value="borrador">Borrador</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+    
+    <select [(ngModel)]="filtroCategoria" (ngModelChange)="aplicarFiltros()">
+      <option value="todos">Filtrar por Categoría</option>
+      <option *ngFor="let cat of categoriasDisponibles" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <ul *ngIf="procesosFiltrados.length > 0" class="lista-procesos">
+    <li *ngFor="let proceso of procesosFiltrados">
+      <div class="proceso-detalle">
+        <div class="proceso-info">
+          <strong>{{ proceso.nombre }}</strong> 
+          <span class="categoria-badge">({{ proceso.categoria }})</span>
+          
+          <span [class]="'estado-badge ' + proceso.estado">{{ proceso.estado | uppercase }}</span>
+        </div>
+        
+        <p class="descripcion">{{ proceso.descripcion }}</p>
+      </div>
+      
+      <div class="proceso-acciones">
+        <button class="btn-secondary">Ver Detalles</button>
+      </div>
+    </li>
+  </ul>
+  
+  <p *ngIf="procesosFiltrados.length === 0" class="mensaje-vacio">
+    No se encontraron procesos que coincidan con los criterios.
+  </p>
+
+</div>
