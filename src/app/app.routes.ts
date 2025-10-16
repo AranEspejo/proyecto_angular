@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
 import { ListaprocesoComponent } from './components/listaproceso.component';
+import { CrearprocesoComponent } from './components/crearproceso.component';
 
 export const routes: Routes = [
     // Ruta para el listado de procesos
   { path: 'procesos', component: ListaprocesoComponent }, 
+  { path: 'crear-proceso', component: CrearprocesoComponent }, 
+
   //{ path: 'login', component: LoginComponent },
   // { path: 'registro', component: RegistroComponent },
   // Redirigir la ruta principal (/) al listado
