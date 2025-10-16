@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Proceso } from '../models/Proceso';
-import { ProcesoService } from '../services/proceso.service';
+import { Proceso } from '../models/Proceso'; 
+
+import { ProcesoService } from '../services/proceso.service'; 
 
 @Component({
   selector: 'app-crearproceso',
   standalone: true,
   // Necesitamos CommonModule para *ngIf y *ngFor, y FormsModule para [(ngModel)]
   imports: [CommonModule, FormsModule],
-  // ¡ESTA LÍNEA DEBE APUNTAR A TU ARCHIVO HTML CON EL FORMULARIO COMPLETO!
   templateUrl: './crearproceso.component.html', 
   //styleUrls: ['./crearproceso.component.css'] // Si tienes un archivo CSS para este componente
 })
@@ -30,7 +30,7 @@ export class CrearprocesoComponent implements OnInit {
   // Inyectamos Router para navegar y ProcesoService para crear
   constructor(
     private router: Router,
-    //private procesoService: ProcesoService
+    private procesoService: ProcesoService
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class CrearprocesoComponent implements OnInit {
         nombre: this.nuevoProceso.nombre,
         descripcion: this.nuevoProceso.descripcion,
         categoria: this.nuevoProceso.categoria,
-        estado: this.nuevoProceso.estado as ('borrador' | 'publicado') // Cast seguro porque el select tiene valores definidos
+        estado: this.nuevoProceso.estado as ('borrador' | 'publicado')
     });
 
     // 3. Guardar el nuevo proceso a través del servicio
